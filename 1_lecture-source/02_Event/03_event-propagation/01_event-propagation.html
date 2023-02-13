@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_event propagation</title>
+    <style>
+        ul { background-color: lightblue; }
+        li { background-color: lightcoral; }
+    </style>
+</head>
+<body>
+    <h1>01. 이벤트 전파</h1>
+
+    <ul id="drink">
+        <li>커피</li>
+        <li>콜라</li>
+        <li>우유</li>
+    </ul>
+
+    <script>
+        const $drink = document.getElementById('drink');
+        $drink.addEventListener('click', e=>{
+            // ul 영역 클릭 시
+            // 2 : 타깃 단계, 타깃도 현재 타깃도 ul로 출력
+            // li 영역 클릭 시
+            // 3 : 버블링 단계(li->ul), 타깃은 li, 현재 타깃은 ul로 출력
+            console.log(e.eventPhase);
+            console.log(e.target);
+            console.log(e.currentTarget);
+        });
+    </script>
+    
+</body>
+</html>
