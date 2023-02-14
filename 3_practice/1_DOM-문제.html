@@ -129,7 +129,7 @@
     <script>
         function createList(){
             let content = prompt('추가할 목록을 입력하세요');
-
+            if(!content) return;
             const $list = document.getElementById('list');         
             const $li = document.createElement('li');
             $li.textContent = content;
@@ -152,9 +152,7 @@
     <script>
         function left(){
             const $area = document.getElementById('area');
-
-            const $firstdiv = $area.firstElementChild;
-            $area.appendChild($firstdiv);
+            $area.appendChild($area.firstElementChild);
         }
     </script>
 
