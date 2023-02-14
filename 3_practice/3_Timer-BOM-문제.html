@@ -24,17 +24,39 @@
         <span class="hour">hh</span>:<span class="min">mm</span>:<span class="sec">ss</span>
     </div>
     <script>
-        function start(){
-            let now = new Date();
-            let hours = now.getHours().toString().padStart(2, '0'); // 시간
-            let minutes = now.getMinutes().toString().padStart(2, '0'); // 분
-            let seconds = now.getSeconds().toString().padStart(2, '0'); // 초
+       let timer; // 타이머 변수
 
-            
-        };
-        
-        
-        
+// 현재 시간을 보여주는 함수
+function start() {
+  let now = new Date(); // 현재 시간 객체
+  let hours = now.getHours().toString().padStart(2, '0'); // 시간
+  let minutes = now.getMinutes().toString().padStart(2, '0'); // 분
+  let seconds = now.getSeconds().toString().padStart(2, '0'); // 초
+  let time = hours + ':' + minutes + ':' + seconds; // hh:mm:ss 형식으로 조합
+
+  let hourSpan = document.querySelector('#clock .hour'); // 시간 표시용 span 요소
+  let minSpan = document.querySelector('#clock .min'); // 분 표시용 span 요소
+  let secSpan = document.querySelector('#clock .sec'); // 초 표시용 span 요소
+
+  hourSpan.innerHTML = hours; // 시간 표시
+  minSpan.innerHTML = minutes; // 분 표시
+  secSpan.innerHTML = seconds; // 초 표시
+
+  timer = setTimeout(start, 1000); // 1초마다 반복
+}
+
+// 타이머를 멈추는 함수
+function stop() {
+  clearTimeout(timer); // 타이머 멈춤
+
+  let hourSpan = document.querySelector('#clock .hour'); // 시간 표시용 span 요소
+  let minSpan = document.querySelector('#clock .min'); // 분 표시용 span 요소
+  let secSpan = document.querySelector('#clock .sec'); // 초 표시용 span 요소
+
+  hourSpan.innerHTML = 'hh'; // 시간 초기화
+  minSpan.innerHTML = 'mm'; // 분 초기화
+  secSpan.innerHTML = 'ss'; // 초 초기화
+}
     </script>
 
 
@@ -48,7 +70,17 @@
 </p>
 <script>
     function sum() {
-        // 코드 작성
+        let numbers = [];
+        while(true){
+            let input = prompt('숫자를 입력하세요.');
+            
+            if(input === null || isNaN(input)){
+                break;
+            }
+            numbers.push(Number(input));
+        }
+
+        return numbers;
     }
 
     console.log("합계 : " + sum());
