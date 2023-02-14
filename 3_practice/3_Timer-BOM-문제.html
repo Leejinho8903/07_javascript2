@@ -71,10 +71,11 @@
         while(true){
             let input = prompt('숫자를 입력하세요.');
             
-            if(input === null || isNaN(input)){
+            if(isNaN(input) || input === null || input === ''){
                 break;
-            }
+            } 
             numbers.push(Number(input));
+            
         }
 
         return numbers.reduce((acc, curr) => acc + curr, 0);
